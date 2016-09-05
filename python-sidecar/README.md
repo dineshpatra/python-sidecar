@@ -42,3 +42,31 @@ curl -v -X GET -L http://198.100.181.66:9090/v2 -H 'Content-Type:application/jso
 < 
 * Connection #0 to host 198.100.181.66 left intact
 {"v2": {"date": "2016-08-07T00:00:00", "status": "current"}} 
+
+## CREATING NEW EVENT
+curl -v -X  POST -L http://198.100.181.66:9090/v2/events/ -H 'Content-Type:application/json' -H 'X-Auth-Token:a5452dd6f64c478aac861428ea919138' -d '{"event":{"name":"Hello", "node_uuid":"12345667", "vm_uuid_list":["124", "456"]}}'
+
+Success code: 201
+event Name must be start and end with [a-zA-Z0-9].
+Requeires: name, node_uuid, event_uuid_list
+
+< HTTP/1.1 201 Created
+< Date: Mon, 05 Sep 2016 11:18:27 GMT
+* Server Apache/2.4.7 (Ubuntu) is not blacklisted
+< Server: Apache/2.4.7 (Ubuntu)
+< x-openstack-request-id: req-4e0141e6-886f-4f23-b2e4-e1575ed44c9a
+< Content-Length: 242
+< Content-Type: application/json; charset=UTF-8
+< 
+* Connection #0 to host 198.100.181.66 left intact
+{"event": {"event_complete_time": null, "node_uuid": "12345667", "event_create_time": "2016-09-05 04:18:27", "name": "Hello", "vm_uuid_list": ["124", "456"], "extra": null, "event_status": "created", "id": "7bff507ab3d846f3a6643721f4458c39"}}
+
+
+
+
+
+## LISTING EVENTS
+
+curl -v -X  GET -L http://198.100.181.66:9090/v2/events/ -H 'Content-Type:application/json' -H 'X-Auth-Token:a5452dd6f64c478aac861428ea919138'
+
+
