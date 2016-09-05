@@ -1,0 +1,26 @@
+#-*- coding: utf-8 -*-
+# ______________________________________________________________________
+# | keystone authentication file                                       |
+# |                                                                    |
+# | This file is responsible for handling the keystone authenticateion |
+# |____________________________________________________________________|
+# | Copyright: 2016@nephoscale.com<info@nephoscale.com>                |
+# |                                                                    |
+# | Start date: 22nd Aug 2016                                          |
+# |____________________________________________________________________|
+
+from pecan import expose, redirect
+import pecan
+
+def authenticate():
+    auth_token = pecan.request.headers.get('X-Auth-Token')
+    if not auth_token:
+        # | If auth token is not defined, then
+        # | return false.
+        pecan.response.status = 403
+        return False
+    
+    #pecan.response.status = 403
+    #pecan.response.text = 'Hellooo'
+    
+    return False;
