@@ -136,6 +136,7 @@ GET  /v2/evacuates/events
 | Pareameters           | Data Type        | Description                                       |
 | ----------------------|:---------------- | --------------------------------------------------|
 | id                    | String           | Id of the event                                   |
+| name                  | String           | name of the event                                 |
 | node_uuid             | String           | UUID of the host                                  |
 | event_create_time     | Date time        | event_creation_time filter                        |
 | min_event_create_time | Date Time        | minimum value event creatuin time                 |
@@ -144,19 +145,61 @@ GET  /v2/evacuates/events
 | limit                 | positive integer |Number of results to be displayed. Defgault is 30  | 
 
 > SUCCESS CODE: 200
+
 > Error codes: 401, 403, 500
 
 ##### RESPONSE Parameters
 
-| Pareameters           | Data Type        | Description                                       |
-| ----------------------|:---------------- | --------------------------------------------------|
-| id                    | String           | Id of the event                                   |
-| node_uuid             | String           | UUID of the host                                  |
-| event_create_time     | Date time        | event_creation_time filter                        |
-| min_event_create_time | Date Time        | minimum value event creatuin time                 |
-| max_event_create_time | Date time        | maximum value for event creation                  |
-| marker                | String           | Last seen event id.                               |
-| limit                 | positive integer |Number of results to be displayed. Defgault is 30  | 
+| Pareameters           | Data Type        | Description                                           |
+| ----------------------|:-----------------| ------------------------------------------------------|
+| events                | JSON OBJECT      | A json object containg array of events                |
+| id                    | String           | Id of the event                                       |
+| name                  | String           | name of the event                                     |
+| event_status          | string           | What is the status of the event. The possible values: `created`, `completed`, `running` |
+| node_uuid             | String           | UUID of the host                                      |
+| event_create_time     | Date time        | When the event was created                            |
+| event_complete_time   | Date time        | When the event was completed                          |
+| vm_uuid_list          | Aarry            | Array containg the vm ids, participated in the event. |
+| extra                 | JSON OBJECT      | Extra data in json                                    |
+
+#### Example
+
+> Request:
+
+```html
+curl -H 'Content-Type:application/json'
+     -H 'X-Auth-Token:0d7f16c43bcc47b69bcc8dddf262097e' 
+     -L http://controller:9090/v2/evacuates/events/?limit=30
+```
+
+> RESPONSE:
+
+```json 
+{
+     "events": [
+          {
+               "id": "59ca965bef7e4a8f99088ac6f50a2e35", 
+               "name": "Hello256", 
+               "event_status": "created", 
+               "event_create_time": "2016-09-02 14:32:17", 
+               "event_complete_time": null, 
+               "node_uuid": "test", 
+               "vm_uuid_list": ["123", "4565"], 
+               "extra": null
+          }, 
+          {
+               "id": "7e1318856d7240728e511013c049876e", 
+               "name": "Hello2567", 
+               "event_status": "created", 
+               "event_create_time": "2016-09-02 13:46:32", 
+               "event_complete_time": null, 
+               "node_uuid": "test", 
+               "vm_uuid_list": ["123", "4565"], 
+               "extra": null
+          }
+     ]
+}
+```
 
 
 
