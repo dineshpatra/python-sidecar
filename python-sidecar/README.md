@@ -8,6 +8,8 @@ Sidecar REST API is to handel the nova-evacaute process.
 GET  /
 ```
 
+For getting all avilable versions
+
 #### Request Header
 
 | Pareameters   | Data Type  | Description                       |
@@ -19,9 +21,9 @@ GET  /
 
 It does not accept and Request Body
 
-Success Code: 200
+> Success Code: 200
 
-Error code: 401
+> Error code: 401
 
 This is used for getting avialble response
 
