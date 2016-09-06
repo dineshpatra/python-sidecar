@@ -143,6 +143,21 @@ GET  /v2/evacuates/events
 | marker                | String           | Last seen event id.                               |
 | limit                 | positive integer |Number of results to be displayed. Defgault is 30  | 
 
+> SUCCESS CODE: 200
+> Error codes: 401, 403, 500
+
+##### RESPONSE Parameters
+
+| Pareameters           | Data Type        | Description                                       |
+| ----------------------|:---------------- | --------------------------------------------------|
+| id                    | String           | Id of the event                                   |
+| node_uuid             | String           | UUID of the host                                  |
+| event_create_time     | Date time        | event_creation_time filter                        |
+| min_event_create_time | Date Time        | minimum value event creatuin time                 |
+| max_event_create_time | Date time        | maximum value for event creation                  |
+| marker                | String           | Last seen event id.                               |
+| limit                 | positive integer |Number of results to be displayed. Defgault is 30  | 
+
 
 
 ## CREATING NEW EVENT
