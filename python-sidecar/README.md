@@ -88,7 +88,7 @@ It does not accept and Request Body
 #### Response Body
 
 | Pareameters   | Data Type   | Description                                                            |
-| ------------- |-----------:|:----------------------------------------------------------------------|
+| ------------- |-----------:|:------------------------------------------------------------------------|
 | v2            | JSON Object | Object containing version 2 info                                       |
 | date          | date time   | Release date of the version                                            |
 | status        | string      | What is the status of theversion. `current`, `supported`, `dereciated` |
@@ -119,11 +119,24 @@ curl -H 'Content-Type:application/json'\
 
 ## Nova Evacuates
 
-###
+### Listing and filtering events
 
 ```html
-GET  /v2/
+GET  /v2/evacuates/events
 ```
+##### Request Headers
+
+| Pareameters   | Data Type  | Description                       |
+| ------------- |:----------:| ---------------------------------:|
+| Content-Type  | String     |  application/json. It is optional |
+| X-Auth-Token  | string     |  Authorization Token              |
+
+##### Query Parameters
+
+| Pareameters   | Data Type  | Description                       |
+| ------------- |:----------:| ---------------------------------:|
+| Content-Type  | String     |  application/json. It is optional |
+| X-Auth-Token  | string     |  Authorization Token              |
 
 
 
