@@ -133,10 +133,15 @@ GET  /v2/evacuates/events
 
 ##### Query Parameters
 
-| Pareameters   | Data Type  | Description                       |
-| ------------- |:----------:| ---------------------------------:|
-| Content-Type  | String     |  application/json. It is optional |
-| X-Auth-Token  | string     |  Authorization Token              |
+| Pareameters           | Data Type        | Description                                       |
+| ----------------------|:---------------- | --------------------------------------------------|
+| id                    | String           | Id of the event                                   |
+| node_uuid             | String           | UUID of the host                                  |
+| event_create_time     | Date time        | event_creation_time filter                        |
+| min_event_create_time | Date Time        | minimum value event creatuin time                 |
+| max_event_create_time | Date time        | maximum value for event creation                  |
+| marker                | String           | Last seen event id.                               |
+| limit                 | positive integer |Number of results to be displayed. Defgault is 30  | 
 
 
 
