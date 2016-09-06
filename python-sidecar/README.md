@@ -261,30 +261,63 @@ curl -X GET
 ```
 
 
-## CREATING NEW EVENT
-curl -v -X  POST -L http://198.100.181.66:9090/v2/events/ -H 'Content-Type:application/json' -H 'X-Auth-Token:a5452dd6f64c478aac861428ea919138' -d '{"event":{"name":"Hello", "node_uuid":"12345667", "vm_uuid_list":["124", "456"]}}'
+### Create a new event
 
-Success code: 201
-event Name must be start and end with [a-zA-Z0-9].
-Requeires: name, node_uuid, event_uuid_list
+```html
+POST  /v2/evacuates/events
+```
+##### Request Headers
 
-< HTTP/1.1 201 Created
-< Date: Mon, 05 Sep 2016 11:18:27 GMT
-* Server Apache/2.4.7 (Ubuntu) is not blacklisted
-< Server: Apache/2.4.7 (Ubuntu)
-< x-openstack-request-id: req-4e0141e6-886f-4f23-b2e4-e1575ed44c9a
-< Content-Length: 242
-< Content-Type: application/json; charset=UTF-8
-< 
-* Connection #0 to host 198.100.181.66 left intact
-{"event": {"event_complete_time": null, "node_uuid": "12345667", "event_create_time": "2016-09-05 04:18:27", "name": "Hello", "vm_uuid_list": ["124", "456"], "extra": null, "event_status": "created", "id": "7bff507ab3d846f3a6643721f4458c39"}}
+| Pareameters   | Data Type  | Description                       |
+| ------------- |:----------:| ----------------------------------|
+| Content-Type  | String     |  application/json.                |
+| X-Auth-Token  | string     |  Authorization Token              |
 
 
+> SUCCESS CODE: 201
 
+> Error codes: 401, 403, 500, 409
 
+##### RESPONSE Parameters
 
-## LISTING EVENTS
+| Pareameters           | Data Type        | Description                                           |
+| ----------------------|:-----------------| ------------------------------------------------------|
+| event                 | JSON OBJECT      | A json object containg the event detail               |
+| id                    | String           | Id of the event                                       |
+| name                  | String           | name of the event                                     |
+| event_status          | string           | What is the status of the event. The possible values: `created`, `completed`, `running` |
+| node_uuid             | String           | UUID of the host                                      |
+| event_create_time     | Date time        | When the event was created                            |
+| event_complete_time   | Date time        | When the event was completed                          |
+| vm_uuid_list          | Aarry            | Array containg the vm ids, participated in the event. |
+| extra                 | JSON OBJECT      | Extra data in json                                    |
 
-curl -v -X  GET -L http://198.100.181.66:9090/v2/events/ -H 'Content-Type:application/json' -H 'X-Auth-Token:a5452dd6f64c478aac861428ea919138'
+#### Example
 
+> Request:
 
+```html
+curl -X POST 
+     -H 'Content-Type:application/json' 
+     -H 'X-Auth-Token:aef34829a88d4046bb9ac52b7e4824ca' 
+     -L http://controller:9090/v2/evacuates/events 
+     -d '{"event":{"name":"arte", "node_uuid":"234t7xut17t", "vm_uuid_list":["3232gjh", "jhcja7676"]}}' 
+```
+
+> RESPONSE:
+
+```json 
+{
+     "event": {
+          "event_complete_time": null, 
+          "node_uuid": "234t7xut17t", 
+          "event_create_time": "2016-09-07 03:44:14", 
+          "name": "arte", 
+          "vm_uuid_list": ["3232gjh", "jhcja7676"], 
+          "extra": null, 
+          "event_status": 
+          "created", 
+          "id": "c4eb2defb1094cb0b665ead9720000bb"
+     }
+}
+```
