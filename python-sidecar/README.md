@@ -61,6 +61,7 @@ curl -H 'Content-Type:application/json'\
 }
 ```
 
+----
 
 ### For getting version info v2.0
 
@@ -114,7 +115,15 @@ curl -H 'Content-Type:application/json'\
 } 
 ```
 
+----
 
+## Nova Evacuates
+
+###
+
+```html
+GET  /v2/
+```
 
 
 
