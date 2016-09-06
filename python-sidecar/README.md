@@ -25,6 +25,13 @@ It does not accept and Request Body
 
 > Error code: 401
 
+#### Response Body
+
+| Pareameters   | Data Type  | Description                       |
+| ------------- |:----------:| ---------------------------------:|
+| Content-Type  | String     |  application/json. It is optional |
+| X-Auth-Token  | string     |  Authorization Token              |
+
 This is used for getting avialble response
 
 
