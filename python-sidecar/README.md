@@ -33,7 +33,30 @@ It does not accept and Request Body
 | v2            | JSON Object | Object containing version 2 info                                       |
 | date          | date time   | Release date of the version                                            |
 | status        | string      | What is the status of theversion. `current`, `supported`, `dereciated` |
- 
+
+
+#### Example
+
+> Request:
+
+```html
+curl -H 'Contrnt-Type:application/json' -H 'X-Auth-Token:cb5a9e2cc2a94077b209f29a32347b0c' -L http://controller:9090
+```
+
+> RESPONSE:
+
+```json
+{
+    "versions": [
+        {
+            "v2": {
+                 "date": "2016-08-07T00:00:00", 
+                 "status": "current"
+            }
+        }
+    ]
+}
+```
 ## GETTING AVILABLE VERSIONS
 
 curl -X GET -L http://controller:9090 -H 'Content-Type:application/json' -H 'X-Auth-Token:&lt;keystone token&gt;'
