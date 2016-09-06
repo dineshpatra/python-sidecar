@@ -8,6 +8,24 @@ Sidecar REST API is to handel the nova-evacaute process.
 GET  /
 ```
 
+#### Request Header
+
+| Pareameters   | Data Type  | Description                       |
+| ------------- |:----------:| ---------------------------------:|
+| Content-Type  | String     |  application/json. It is optional |
+| X-Auth-Token  | string     |  Authorization Token              |
+
+#### Request Body
+
+It does not accept and Request Body
+
+Success Code: 200
+
+Error code: 401
+
+This is used for getting avialble response
+
+
 ## GETTING AVILABLE VERSIONS
 
 curl -X GET -L http://controller:9090 -H 'Content-Type:application/json' -H 'X-Auth-Token:&lt;keystone token&gt;'
