@@ -4,7 +4,7 @@ Sidecar REST API is to handel the nova-evacaute process.
 
 ## Commands
 
-*GET*  /evacutes/events/
+<span style="background:green;">*GET*</span>  /evacutes/events/
 
 ## GETTING AVILABLE VERSIONS
 
