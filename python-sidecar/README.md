@@ -1,5 +1,11 @@
 # SIDECAR REST API VERSION 2.0
 
+Sidecar REST API is to handel the nova-evacaute process.
+
+## Commands
+
+*GET*  /evacutes/events/
+
 ## GETTING AVILABLE VERSIONS
 
 curl -X GET -L http://controller:9090 -H 'Content-Type:application/json' -H 'X-Auth-Token:&lt;keystone token&gt;'
