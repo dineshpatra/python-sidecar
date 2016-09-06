@@ -201,6 +201,64 @@ curl -H 'Content-Type:application/json'
 }
 ```
 
+### Get detail of an event
+
+```html
+GET  /v2/evacuates/events/{event_id}
+```
+##### Request Headers
+
+| Pareameters   | Data Type  | Description                       |
+| ------------- |:----------:| ---------------------------------:|
+| Content-Type  | String     |  application/json. It is optional |
+| X-Auth-Token  | string     |  Authorization Token              |
+
+
+> SUCCESS CODE: 200
+
+> Error codes: 401, 403, 500
+
+##### RESPONSE Parameters
+
+| Pareameters           | Data Type        | Description                                           |
+| ----------------------|:-----------------| ------------------------------------------------------|
+| event                 | JSON OBJECT      | A json object containg the event detail               |
+| id                    | String           | Id of the event                                       |
+| name                  | String           | name of the event                                     |
+| event_status          | string           | What is the status of the event. The possible values: `created`, `completed`, `running` |
+| node_uuid             | String           | UUID of the host                                      |
+| event_create_time     | Date time        | When the event was created                            |
+| event_complete_time   | Date time        | When the event was completed                          |
+| vm_uuid_list          | Aarry            | Array containg the vm ids, participated in the event. |
+| extra                 | JSON OBJECT      | Extra data in json                                    |
+
+#### Example
+
+> Request:
+
+```html
+curl -X GET 
+     -H 'Contrnt-Type:application/json'
+     -H 'X-Auth-Token:2c213cc8f62e4c2086592cf7d52b7c21' 
+     -L http://controller:9090/v2/evacuates/events/59ca965bef7e4a8f99088ac6f50a2e35
+```
+
+> RESPONSE:
+
+```json 
+{
+     "event": {
+          "event_complete_time": null, 
+          "node_uuid": "test", 
+          "event_create_time": "2016-09-02 14:32:17", 
+          "name": "Hello256", 
+          "vm_uuid_list": ["123", "4565"], 
+          "extra": null, 
+          "event_status": "created", 
+          "id": "59ca965bef7e4a8f99088ac6f50a2e35"
+     }
+}
+```
 
 
 ## CREATING NEW EVENT
