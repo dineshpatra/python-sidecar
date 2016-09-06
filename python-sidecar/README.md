@@ -27,14 +27,13 @@ It does not accept and Request Body
 
 #### Response Body
 
-| Pareameters   | Data Type  | Description                       |
-| ------------- |:----------:| ---------------------------------:|
-| Content-Type  | String     |  application/json. It is optional |
-| X-Auth-Token  | string     |  Authorization Token              |
-
-This is used for getting avialble response
-
-
+| Pareameters   | Data Type   | Description                                                            |
+| ------------- |:-----------:|:----------------------------------------------------------------------:|
+| versions      | JSON Object | Object containing array of diffrent versions                           |
+| v2            | JSON Object | Object containing version 2 info                                       |
+| date          | date time   | Release date of the version                                            |
+| status        | string      | What is the status of theversion. `current`, `supported`, `dereciated` |
+ 
 ## GETTING AVILABLE VERSIONS
 
 curl -X GET -L http://controller:9090 -H 'Content-Type:application/json' -H 'X-Auth-Token:&lt;keystone token&gt;'
