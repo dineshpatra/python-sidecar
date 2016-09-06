@@ -40,7 +40,9 @@ It does not accept and Request Body
 > Request:
 
 ```html
-curl -H 'Contrnt-Type:application/json' -H 'X-Auth-Token:cb5a9e2cc2a94077b209f29a32347b0c' -L http://controller:9090
+curl -H 'Content-Type:application/json'\
+     -H 'X-Auth-Token:cb5a9e2cc2a94077b209f29a32347b0c'\
+     -L http://controller:9090
 ```
 
 > RESPONSE:
