@@ -374,7 +374,49 @@ PUT  /v2/evacuates/events/{event_id}
 > RESPONSE:
 
 ```json 
-hEADER :
+HEADER :
+HTTP/1.1 204 No Content
+
+```
+
+
+
+### DELETE a event
+
+```html
+DELETE  /v2/evacuates/events/{event_id}
+```
+##### Request Headers
+
+| Pareameters   | Data Type  | Description                       |
+| ------------- |:----------:| ----------------------------------|
+| Content-Type  | String     |  application/json.                |
+| X-Auth-Token  | string     |  Authorization Token              |
+
+
+> SUCCESS CODE: 204
+
+> Error codes: 401, 403, 500, 409
+
+
+
+
+
+#### Example
+
+> Request:
+
+```html
+ curl -X DELETE 
+      -H 'Content-Type:application/json' 
+      -H 'X-Auth-Token:c8813ebe6d99435ab2fe9ea502256cc8' 
+      -L http://controller:9090/v2/evacuates/events/eba9897c33f14209ba28a82c22b8286c  
+```
+
+> RESPONSE:
+
+```json 
+HEADER :
 HTTP/1.1 204 No Content
 
 ```
