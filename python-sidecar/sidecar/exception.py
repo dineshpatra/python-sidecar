@@ -1,3 +1,18 @@
+# -*- coding: utf-8 -*-
+# _______________________________________________________
+# | File Name: exception.py                             |
+# |                                                     |
+# | Package Name: Python-Sidecar REST API               |
+# |                                                     |
+# | Version: 2.0                                        |
+# |                                                     |
+# | Sofatware: Openstack                                |
+# |_____________________________________________________|
+# | Copyright: 2016@nephoscale.com                      |
+# |                                                     |
+# | Author:  info@nephoscale.com                        |
+# |_____________________________________________________|
+
 class InvalidJSON(Exception):
     code = 400
     pass
@@ -22,3 +37,8 @@ class Conflict(Exception):
     code = 409
     title = "Conflict"
     pass
+
+class Forbidden(Exception):
+    code = 403
+    title = "Forbidden"
+

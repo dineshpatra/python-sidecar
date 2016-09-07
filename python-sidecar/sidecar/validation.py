@@ -1,3 +1,18 @@
+# -*- coding: utf-8 -*-
+# _______________________________________________________
+# | File Name: validation.py                            |
+# |                                                     |
+# | Package Name: Python-Sidecar REST API               |
+# |                                                     |
+# | Version: 2.0                                        |
+# |                                                     |
+# | Sofatware: Openstack                                |
+# |_____________________________________________________|
+# | Copyright: 2016@nephoscale.com                      |
+# |                                                     |
+# | Author:  info@nephoscale.com                        |
+# |_____________________________________________________|
+
 import pecan, jsonschema, simplejson as json
 from sidecar import exception
 from simplejson import JSONDecodeError
