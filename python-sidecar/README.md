@@ -321,3 +321,60 @@ curl -X POST
      }
 }
 ```
+
+### Edit a event
+
+```html
+PUT  /v2/evacuates/events/{event_id}
+```
+##### Request Headers
+
+| Pareameters   | Data Type  | Description                       |
+| ------------- |:----------:| ----------------------------------|
+| Content-Type  | String     |  application/json.                |
+| X-Auth-Token  | string     |  Authorization Token              |
+
+##### Request body
+
+| Pareameters           | Data Type        | Description                                           |
+| ----------------------|:-----------------| ------------------------------------------------------|
+| event                 | JSON OBJECT      | A json object containg the event detail               | 
+| name                  | String           | name of the event                                     |
+| event_status          | string           | What is the status of the event. The possible values: `completed`, `running` |
+| node_uuid             | String           | UUID of the host                                      |  
+| vm_uuid_list          | Aarry            | Array containg the vm ids, participated in the event. | 
+
+> SUCCESS CODE: 204
+
+> Error codes: 401, 403, 500, 409
+
+
+
+
+
+#### Example
+
+> Request:
+
+```html
+ curl -X PUT 
+      -H 'Content-Type:application/json' 
+      -H 'X-Auth-Token:c8813ebe6d99435ab2fe9ea502256cc8' 
+      -L http://controller:9090/v2/evacuates/events/eba9897c33f14209ba28a82c22b8286c 
+      -d '{
+               "event":{
+                    "name":"hhhhhh555", 
+                    "event_status": "completed", 
+                    "node_uuid":"7678687hghj", 
+                    "vm_uuid_list":["tette", "jhsgjc"]
+               }
+          }'
+```
+
+> RESPONSE:
+
+```json 
+hEADER :
+HTTP/1.1 204 No Content
+
+```
