@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # _______________________________________________________
-# | File Name: exception.py                             |
+# | File Name: app.py                                   |
 # |                                                     |
 # | Package Name: Python-Sidecar REST API               |
 # |                                                     |
