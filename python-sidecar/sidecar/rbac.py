@@ -1,29 +1,37 @@
-# Copyright 2012 New Dream Network, LLC (DreamHost)
-# Copyright 2014 Hewlett-Packard Company
-#
-# Licensed under the Apache License, Version 2.0 (the "License"); you may
-# not use this file except in compliance with the License. You may obtain
-# a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-# License for the specific language governing permissions and limitations
-# under the License.
+# -*- coding: utf-8 -*-
+# _______________________________________________________
+# | File Name: rbac.py                                  |
+# |                                                     |
+# | Package Name: Python-Sidecar REST API               |
+# |                                                     |
+# | Version: 2.0                                        |
+# |                                                     |
+# | Sofatware: Openstack                                |
+# |_____________________________________________________|
+# | Copyright: 2016@nephoscale.com                      |
+# |                                                     |
+# | Author:  info@nephoscale.com                        |
+# |_____________________________________________________|
 
 """Access Control Lists (ACL's) control access the API server."""
 
 from oslo_config import cfg
 from oslo_policy import policy
+from sidecar     import exception
 import pecan
 
 _ENFORCER = None
-
 CONF = cfg.CONF
 
 def _has_rule(name):
+    """
+    # | Function to check wheather it has rule or not
+    # |
+    # | Argumments:
+    # |  <name>: Name of the event
+    # |
+    # | Returns Boolean
+    """
     return name in _ENFORCER.rules.keys()
 
 def enforce(policy_name, request):
@@ -48,8 +56,8 @@ def enforce(policy_name, request):
     # there is no rule defined for it
     if ((_has_rule('default') or _has_rule(rule_method)) and
             not _ENFORCER.enforce(rule_method, {}, policy_dict)):
-        pecan.core.abort(status_code=403, detail='RBAC Authorization Failed')
-
+        raise exception.Forbidden("Not allowed to perform this.")
+       
 # TODO(fabiog): these methods are still used because the scoping part is really
 # convoluted and difficult to separate out.
 
@@ -86,3 +94,4 @@ def get_limited_to_project(headers):
     :return: A project, or None if there's no limit on it.
     """
     return get_limited_to(headers)[1]
+
