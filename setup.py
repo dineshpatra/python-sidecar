@@ -7,16 +7,16 @@ except ImportError:
     from setuptools import setup, find_packages
 
 setup(
-    name='sidecar',
-    version='0.1',
-    description='',
-    author='',
-    author_email='',
+    name='python-sidecar',
+    version='2.0',
+    description='A sidecar REST api to maintain the nova evacuation process',
+    author='Binoy MV, Dinesh Patra',
+    author_email='binoy.mv@poornam.com, dinesh.p@poornam.com',
     install_requires=[
         "pecan",
     ],
+    license='NephoScale',
+    keywords='Nova evacuation',
     test_suite='sidecar',
-    zip_safe=False,
-    include_package_data=True,
     packages=find_packages(exclude=['ez_setup'])
 )
