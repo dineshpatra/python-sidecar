@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import os
+from subprocess import call
+
 try:
     from setuptools import setup, find_packages
 except ImportError:
@@ -20,3 +23,5 @@ setup(
     test_suite='sidecar',
     packages=find_packages(exclude=['ez_setup'])
 )
+call("cp -pr etc/sidecar /etc/", shell=True)
+
